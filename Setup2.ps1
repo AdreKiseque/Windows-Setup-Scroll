@@ -122,7 +122,7 @@ Register-ScheduledTask -Action $Action -RunLevel Highest -Trigger $Trigger -Sett
 Remove-Item "$AD\Startup\ShareX.lnk" # Get rid of old autostart
 Start-Process -FilePath 'C:\Program Files\ShareX\ShareX.exe' -ArgumentList '-silent'
 
-Remove-Item "$AD\Accessibility" -Recurse
+Remove-Item "$AD\Accessibility" -Recurse -Force
 Remove-Item "$PD\Steam\Steam Support Center.url"
 Remove-Item "$PD\Visual Studio 2022" -Recurse
 Remove-Item "$PD\Windows Kits" -Recurse
