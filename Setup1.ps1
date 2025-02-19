@@ -169,27 +169,27 @@ Receive-Job $LangJob -Wait
 
 # Remove unneeded features
 Write-Host 'Uninstalling PowerShell ISE...'
-Get-WindowsCapability -Online -Name Microsoft.Windows.PowerShell.ISE* | Remove-WindowsCapability -Online
+Remove-WindowsCapability -Online -Name Microsoft.Windows.PowerShell.ISE
 "Done`n", 'Uninstalling Edge Internet Explorer Mode...' | Write-Host
-Get-WindowsCapability -Online -Name Browser.InternetExplorer* | Remove-WindowsCapability -Online
+Remove-WindowsCapability -Online -Name Browser.InternetExplorer
 "Done`n", 'Uninstalling Windows Hello Facial Recognition...' | Write-Host
-Get-WindowsCapability -Online -Name Hello.Face* | Remove-WindowsCapability -Online
+Remove-WindowsCapability -Online -Name Hello.Face
 "Done`n", 'Uninstalling VBScript...' | Write-Host
-Get-WindowsCapability -Online -Name VBSCRIPT* | Remove-WindowsCapability -Online
+Remove-WindowsCapability -Online -Name VBSCRIPT
 "Done`n", 'Uninstalling Windows PowerShell 2.0...' | Write-Host
 Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2Root -NoRestart
 Write-Host "Done`n"
 
 Write-Host 'Removing leftover en-GB components that are out of use...'
-Get-WindowsCapability -Online -Name Language.Handwriting~~~en-GB* | Remove-WindowsCapability -Online
-Get-WindowsCapability -Online -Name Language.Speech~~~en-GB* | Remove-WindowsCapability -Online
-Get-WindowsCapability -Online -Name Language.TextToSpeech~~~en-GB* | Remove-WindowsCapability -Online
-Get-WindowsCapability -Online -Name Language.OCR~~~en-GB* | Remove-WindowsCapability -Online
+Remove-WindowsCapability -Online -Name Language.Handwriting~~~en-GB
+Remove-WindowsCapability -Online -Name Language.Speech~~~en-GB
+Remove-WindowsCapability -Online -Name Language.TextToSpeech~~~en-GB
+Remove-WindowsCapability -Online -Name Language.OCR~~~en-GB
 Write-Host "Done`n"
 
 # Enable Windows Sandbox
 Write-Host 'Enabling Windows Sandbox...'
-#Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -NoRestart
 Write-Host "Done`n"
 
 wsl --install
