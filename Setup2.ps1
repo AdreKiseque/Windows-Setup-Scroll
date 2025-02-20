@@ -121,8 +121,10 @@ $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -Compatibility
 # Run ShareX as admin so it works on elevated windows
 Register-ScheduledTask -Action $Action -RunLevel Highest -Trigger $Trigger -Settings $Settings -TaskName 'ShareX'
 Remove-Item "$AD\Startup\ShareX.lnk" # Get rid of old autostart
+# I couldn't tell you why but this seems to cause minor issues if you've signed into you Microsoft account beforehand (reïmporting manually fixes it)
 Start-Process -FilePath 'C:\Program Files\ShareX\ShareX.exe' -ArgumentList '-silent'
 
+# Organize Start Menu list full list a bit
 Remove-Item "$AD\Accessibility" -Recurse -Force
 Remove-Item "$PD\Steam\Steam Support Center.url"
 Remove-Item "$PD\Visual Studio 2022" -Recurse
