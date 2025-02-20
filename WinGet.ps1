@@ -39,7 +39,7 @@ foreach($Package in $NicePackages) {
     winget install --id $Package --source winget
     Start-Sleep -Milliseconds 100 # This seems to help it not have random errors apparently
 }
-winget install Mozilla.Firefox --custom /PrivateBrowsingShortcut=false --source winget
+winget install Mozilla.Firefox --source winget --custom /PrivateBrowsingShortcut=false
 # Spotify won't install from an elevated session so we have to do this nonsense
 $Shell = New-Object -ComObject WScript.Shell
 $Shortcut = $Shell.CreateShortcut("$PSScriptRoot\Install.lnk")
