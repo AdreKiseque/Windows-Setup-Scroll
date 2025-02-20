@@ -91,7 +91,8 @@ Set-SystemSound -Scheme $Scheme -EventKey 'Explorer\Navigating'             -Sou
 
 # Ok this should really be in the first script but it's like super weird if the computer's just recently started so I moved it here
 # Also for some reason the Settings GUI changes this by just deleting the entry instead of setting it to 1 so we're doing that here too
-Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp' -Name 'Enabled'
+#Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp' -Name 'Enabled'
+# Just isn't reliable, scrapped.
 
 $AD = "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
 $PD = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs"
