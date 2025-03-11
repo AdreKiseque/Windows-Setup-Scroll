@@ -88,10 +88,10 @@
             },
             {
                 "adjustIndistinguishableColors": "indexed",
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "guid": "{c47d202b-fede-5109-af89-3e1f386b180f}",
                 "hidden": false,
                 "name": "Ubuntu",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+                "source": "Microsoft.WSL"
             },
             {
                 "adjustIndistinguishableColors": "indexed",
