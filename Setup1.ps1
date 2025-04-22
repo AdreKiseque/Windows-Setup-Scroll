@@ -133,7 +133,7 @@ Start-Sleep -Seconds 3 # For pacing
 #EndRegion
 
 # Taking out the trash
-Write-Host 'Uninstalling common BLOAT...'
+Write-Host 'Uninstalling common TRASH...'
 $ThingsToRemove = @(
     'Clipchamp.Clipchamp',
     'Microsoft.BingNews',
@@ -149,8 +149,7 @@ $ThingsToRemove = @(
     'Microsoft.Todos',
     'MSTeams',
     'Microsoft.Windows.DevHome',
-    'Microsoft.Copilot',
-    'Microsoft.StartExperiencesApp'
+    'Microsoft.Copilot'
 )
 foreach($Thing in $ThingsToRemove) {
     Get-AppxPackage $Thing | Remove-AppxPackage -AllUsers
