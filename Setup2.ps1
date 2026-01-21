@@ -99,13 +99,17 @@ $PD = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 # Configure apps
 New-Item -ItemType Directory -Path "$Env:HOME\PowerShell"
-rustup completions powershell >> $PROFILE.CurrentUserCurrentHost
 Add-Content $PROFILE {
     function prompt { # Secure password
       "`e[93m$Env:USERNAME`e[37m@`e[93m$Env:COMPUTERNAME `e[90m[$(Get-Date -Format HH:mm:ss)]`n" +
       "`e[94mPS`e[5;95m✦ `e[97;25m$PWD`e[0m➤ "
     }
 }
+rustup completions powershell > "$Env:HOME\PowerShell\RustupCompletions.ps1"
+Add-Content $PROFILE '. "$Env:HOME\PowerShell\RustupCompletions.ps1"'
+# Unsupported :sob:
+#rustup completions powershell cargo > "$Env:HOME\PowerShell\CargoCompletions.ps1"
+#Add-Content $PROFILE '. "$Env:HOME\PowerShell\CargoCompletions.ps1"'
 
 winget configure --enable
 Start-Sleep 1
