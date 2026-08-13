@@ -16,7 +16,10 @@ Write-Host 'Process start'
 Write-Host 'Configuring environment...'
 #Region Environment
 # Updating PATH
-setx PATH "$Env:PATH;C:\Program Files\LLVM\bin" /M
+# Yes this is literally the tersest and most readable way to update the Path without incurring colateral damage
+$PathPath = 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment'
+$MachinePath = (Get-Item $PathPath).GetValue('Path', '', 'DoNotExpandEnvironmentNames')
+Set-ItemProperty -Path $PathPath -Name 'Path' -Value "$MachinePath;C:\Program Files\LLVM\bin"
 # Bringing polite apps to a more suiting home
 $Env:RUSTUP_HOME = "$Env:LOCALAPPDATA\Rust\Rustup"; setx RUSTUP_HOME $Env:RUSTUP_HOME
 $Env:CARGO_HOME = "$Env:LOCALAPPDATA\Rust\Cargo"; setx CARGO_HOME $Env:CARGO_HOME
