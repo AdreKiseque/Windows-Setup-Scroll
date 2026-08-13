@@ -116,7 +116,7 @@ Set-WinGetUserSetting -UserSettings @{
 }
 # winget import sucks less now!
 Write-Host 'Invoking Windows Package Manager...'
-winget import $PSScriptRoot\winget.json
+winget import $PSScriptRoot\winget.json --accept-source-agreements --accept-package-agreements
 Write-Host 'OK'
 
 # Taking out the trash
