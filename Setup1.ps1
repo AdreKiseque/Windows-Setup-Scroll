@@ -87,7 +87,7 @@ $LangJob = Install-Language en-CA -AsJob
 
 $LanguageList = New-WinUserLanguageList en-CA
 $LanguageList[0].InputMethodTips[0] = '1009:00020409' # US-International keyboard
-$LanguageList[0].InputMethodTips.Add('1009:00000409')
+$LanguageList[0].InputMethodTips.Add('1009:00000409') # Standard US keyboard (no dead keys)
 Set-WinUserLanguageList $LanguageList -Force
 
 Set-WinHomeLocation -GeoId 0x27
