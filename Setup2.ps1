@@ -85,14 +85,7 @@ Set-SystemSound -Scheme $Scheme -EventKey '.Default\SystemExit'             -Sou
 Set-SystemSound -Scheme $Scheme -EventKey '.Default\SystemHand'             -SoundPath "$SoundPath\Critical Stop.wav"
 Set-SystemSound -Scheme $Scheme -EventKey '.Default\SystemNotification'     -SoundPath "$SoundPath\Notify.wav"
 Set-SystemSound -Scheme $Scheme -EventKey '.Default\WindowsUAC'             -SoundPath "$SoundPath\User Account Control.wav"
-Set-SystemSound -Scheme $Scheme -EventKey '.Default\WindowsLogon'           -SoundPath "$Env:Windir\Media\Windows Logon Sound.wav"
-Set-SystemSound -Scheme $Scheme -EventKey 'Explorer\Navigating'             -SoundPath "$Env:Windir\Media\Navigation Start.wav" # Classic
 #EndRegion
-
-# Ok this should really be in the first script but it's like super weird if the computer's just recently started so I moved it here
-# Also for some reason the Settings GUI changes this by just deleting the entry instead of setting it to 1 so we're doing that here too
-#Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp' -Name 'Enabled'
-# Just isn't reliable, scrapped.
 
 $AD = "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
 $PD = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs"
