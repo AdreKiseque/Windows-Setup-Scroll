@@ -145,8 +145,6 @@ Remove-WindowsCapability -Online -Name Browser.InternetExplorer~~~~0.0.11.0
 Remove-WindowsCapability -Online -Name Hello.Face.20134~~~~0.0.1.0
 "Done`n", 'Uninstalling VBScript...' | Write-Host
 Remove-WindowsCapability -Online -Name VBSCRIPT~~~~
-"Done`n", 'Uninstalling Windows PowerShell 2.0...' | Write-Host
-Disable-WindowsOptionalFeature -Online -FeatureName MicrosoftWindowsPowerShellV2Root -NoRestart
 Write-Host "Done`n"
 
 Write-Host 'Removing leftover en-GB components that are out of use...'
