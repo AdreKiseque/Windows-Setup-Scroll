@@ -98,6 +98,14 @@ Set-Culture en-CA
 Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
 
 # Installing things
+
+# I'm pretty sure Docker depends on WSL, and I'm pretty sure WSL installs more nicely if Sandbox is already added so they've been moved up
+Write-Host 'Enabling Windows Sandbox...'
+Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -NoRestart
+Write-Host "Done`n"
+
+wsl --install
+
 # We don't *need* this, but it does make things a bit easier
 Install-Module -Name Microsoft.WinGet.Client -Force
 
@@ -116,7 +124,7 @@ Set-WinGetUserSetting -UserSettings @{
 }
 # winget import sucks less now!
 Write-Host 'Invoking Windows Package Manager...'
-winget import $PSScriptRoot\winget.json --accept-source-agreements --accept-package-agreements
+winget import $PSScriptRoot\AppConfig\winget.json --accept-source-agreements --accept-package-agreements
 Write-Host 'OK'
 
 # Taking out the trash
@@ -169,13 +177,6 @@ Remove-WindowsCapability -Online -Name Language.Speech~~~en-GB~0.0.1.0
 Remove-WindowsCapability -Online -Name Language.TextToSpeech~~~en-GB~0.0.1.0
 Remove-WindowsCapability -Online -Name Language.OCR~~~en-GB~0.0.1.0 # This sucks
 Write-Host "Done`n"
-
-# Enable Windows Sandbox
-Write-Host 'Enabling Windows Sandbox...'
-Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -NoRestart
-Write-Host "Done`n"
-
-wsl --install
 
 $Player = New-Object System.Media.SoundPlayer
 $Player.SoundLocation = "$PSScriptRoot\Assets\Notify.wav"
