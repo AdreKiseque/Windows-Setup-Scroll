@@ -120,7 +120,7 @@ winget import $PSScriptRoot\winget.json
 Write-Host 'OK'
 
 # Taking out the trash
-Write-Host 'Uninstalling common TRASH...'
+Write-Host 'Eliminating clutter...'
 $ThingsToRemove = @(
     'Clipchamp.Clipchamp',
     'Microsoft.BingNews',
@@ -182,14 +182,14 @@ $Player.SoundLocation = "$PSScriptRoot\Assets\Notify.wav"
 $Player.Play()
 
 $Confirmation = $Host.UI.PromptForChoice(
-    'Restart?',
-    'The computer must restart to continue with setup. Would you like to restart now?',
-    ('&Yes', '&No'),
+    'Edstart?',
+    'Þe reckoner must edstart to þroughwone wiþ setup. Wouldst þu like to edstart now?',
+    ('&Yea', '&Nay'),
     0)
 [Win32.ThreadExecutionState]::SetThreadExecutionState($OldState) | Out-Null # Disable the forced awake state
 if ($Confirmation -eq 0) {
-    Write-Host 'See you soon.'
+    Write-Host 'See þee soon :)'
     Restart-Computer
 } else {
-    Write-Host 'It''s ok; take your time, sweetie.'
+    Write-Host 'It''s ok; take þy time, sweetie.'
 }
