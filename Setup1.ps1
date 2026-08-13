@@ -13,10 +13,6 @@ $OldState = [Win32.ThreadExecutionState]::SetThreadExecutionState($State)
 
 Write-Host 'Process start'
 
-# We need these guys if we're gonna take out Edge
-Install-PackageProvider -Name NuGet -Force
-Install-Module -Name ProcessEx -Force
-
 Write-Host 'Configuring environment...'
 #Region Environment
 # Updating PATH
@@ -109,28 +105,6 @@ Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
 Write-Host 'Invoking Windows Package Manager...'
 &$PSScriptRoot\WinGet.ps1
 Write-Host 'OK'
-
-Write-Host 'Making arrangements for the removal of Edge...'
-#Region Edge nonsense
-# The process of removing Edge is a delicate one. It will typically comply with valid requests politely, but can sometimes respond unexpectedly...
-# More specifically, the uninstaller is thorough and effective when invoked properly,
-# but unfortunately-timed update processes can cause bizarre behaviour like immediate reïnstallation, or even block it from starting entirely.
-# It's rare, but to be safe, we're doing this in two parts: disabling the automatic updates first... 
-Get-Service -Name edgeupdate* | Set-Service -StartupType Disabled
-Get-ScheduledTask -TaskName MicrosoftEdgeUpdateTaskMachine* | Disable-ScheduledTask
-# ...then carrying out the actual uninstallation on next boot, before anything has the chance to get in the way.
-$Action = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument "$PSScriptRoot\RemoveEdge.ps1"
-$Trigger = New-ScheduledTaskTrigger -AtStartup
-$Principal = New-ScheduledTaskPrincipal -UserId 'SYSTEM' -RunLevel Highest
-$Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -Compatibility Win8 # 8 = 10 = 11, naturally
-# Honestly have no idea if this will work but here's hoping
-Register-ScheduledTask -Action $Action -Principal $Principal -Trigger $Trigger -Settings $Settings  -TaskName 'Remove Edge'
-# Remove provisioned package for good measure
-Get-AppxProvisionedPackage -Online | Where-Object DisplayName -eq Microsoft.MicrosoftEdge.Stable |
-    Remove-AppxProvisionedPackage -PackageName { $_.PackageName } -Online
-Write-Host "The plan is set in motion.`n"
-Start-Sleep -Seconds 3 # For pacing
-#EndRegion
 
 # Taking out the trash
 Write-Host 'Uninstalling common TRASH...'
