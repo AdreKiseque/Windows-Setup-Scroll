@@ -103,7 +103,7 @@ Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
 
 # Installing things
 
-# I'm pretty sure Docker depends on WSL, and I'm pretty sure WSL installs more nicely if Sandbox is already added so they've been moved up
+# I'm pretty sure Docker depends on WSL, and I'm pretty sure WSL installs more nicely if Sandbox is already added, so they've been moved up
 Write-Host 'Enabling Windows Sandbox...'
 Enable-WindowsOptionalFeature -Online -FeatureName Containers-DisposableClientVM -NoRestart
 Write-Host "Done`n"
