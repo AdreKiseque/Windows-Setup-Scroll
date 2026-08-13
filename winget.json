@@ -1,0 +1,158 @@
+{
+    "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+	"WinGetVersion": "1.29.280",
+    "CreationDate": "2026-08-11T00:00:00.000-00:00",
+    "Sources": [
+        {
+            "SourceDetails": {
+                "Name": "winget",
+                "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+                "Argument": "https://cdn.winget.microsoft.com/cache",
+                "Type": "Microsoft.PreIndexed.Package"
+            },
+            "Packages": [
+                {
+                    "PackageIdentifier": "Microsoft.VisualStudio.BuildTools",
+                    "Scope": "machine",
+                    "InitialOverrideArguments": "--wait --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 --add Microsoft.VisualStudio.Component.Windows11SDK.26100 --quiet --norestart"
+                },
+                {
+                    "PackageIdentifier": "LLVM.LLVM",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Rustlang.Rustup"
+                },
+                {
+                    "PackageIdentifier": "Git.Git",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "OpenJS.NodeJS.LTS",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "PostgreSQL.PostgreSQL.18",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.PowerShell",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Mozilla.Firefox.en-CA",
+                    "Scope": "machine",
+                    "InitialCustomSwitches": "/PrivateBrowsingShortcut=false"
+                },
+                {
+                    "PackageIdentifier": "Valve.Steam",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "gstreamerproject.gstreamer",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Cockos.REAPER",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Audacity.Audacity",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "MusicBrainz.Picard",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "FlorianHeidenreich.Mp3tag",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Inkscape.Inkscape",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "OBSProject.OBSStudio",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "7zip.7zip",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "voidtools.Everything",
+                    "Scope": "machine"
+                },
+                {
+                    "PackageIdentifier": "Discord.Discord",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.VisualStudioCode",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Docker.DockerDesktop",
+                    "InitialOverrideArguments": "install --user"
+                },
+                {
+                    "PackageIdentifier": "ShareX.ShareX",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "LiveSplit.LiveSplit",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Xiph.FLAC",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Gyan.FFmpeg",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "ezwinports.make",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Python.Python.3.14",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.Sysinternals.ProcessMonitor",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.Sysinternals.Strings",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Microsoft.PowerToys",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "JohnMacFarlane.Pandoc",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "dotPDN.PaintDotNet",
+                    "Scope": "user"
+                },
+                {
+                    "PackageIdentifier": "Zoom.Zoom"
+                },
+                {
+                    "PackageIdentifier": "SlackTechnologies.Slack"
+                },
+                {
+                    "PackageIdentifier": "Telegram.TelegramDesktop"
+                },
+                {
+                    "PackageIdentifier": "RamenSoftware.Windhawk"
+                }
+            ]
+        }
+    ]
+}

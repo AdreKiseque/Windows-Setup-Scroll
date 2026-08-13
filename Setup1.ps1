@@ -98,9 +98,25 @@ Set-Culture en-CA
 Copy-UserInternationalSettingsToSystem -WelcomeScreen $True -NewUser $True
 
 # Installing things
-# I was originally using winget import for this but it turns out it kinda sucks so
+# We don't *need* this, but it does make things a bit easier
+Install-Module -Name Microsoft.WinGet.Client -Force
+
+# Make sure we're on the latest version because we depend on some more recent features
+Repair-WinGetPackageManager -Force -Latest -AllUsers
+
+Set-WinGetUserSetting -UserSettings @{
+    visual = @{
+        progressBar = 'rainbow' # Very important
+    }
+    installBehavior = @{
+        preferences = @{
+            architectures = ,'x64' # Not sure this actually does anything here but may as well be explicit
+        }
+    }
+}
+# winget import sucks less now!
 Write-Host 'Invoking Windows Package Manager...'
-&$PSScriptRoot\WinGet.ps1
+winget import $PSScriptRoot\winget.json
 Write-Host 'OK'
 
 # Taking out the trash
