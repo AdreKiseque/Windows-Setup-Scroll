@@ -59,9 +59,6 @@ Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Precisio
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\PrecisionTouchPad' -Name 'FourFingerTapEnabled' -Value 0
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\PrecisionTouchPad' -Name 'FourFingerSlideEnabled' -Value 0
 # These are like, extra-miscellaneous, I guess?
-Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR' -Name 'AppCaptureEnabled' -Value 0 # Disable Game Bar (kinda)
-Set-ItemProperty -Path 'HKCU:\System\GameConfigStore' -Name 'GameDVR_Enabled' -Value 0 # Not sure this does anything on 11 but may as well be thorough
-Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'DisallowShaking' -Value 0 # Aero Shake!
 Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power' -Name 'HiberbootEnabled' -Value 0 # Disable fast startup
 Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Clipboard' -Name 'EnableClipboardHistory' -Value 1
 Set-ItemProperty -Path 'HKCU:\Control Panel\Keyboard' -Name 'PrintScreenKeyForSnippingEnabled' -Value '0' # Love you ST but we're using ShareX
@@ -115,7 +112,6 @@ $ThingsToRemove = @(
     'Microsoft.BingWeather',
     'Microsoft.GamingApp',
     'Microsoft.Xbox.TCUI',
-    'Microsoft.XboxGamingOverlay', # If you had just coöperated it wouldn't have had to come to this
     'Microsoft.MicrosoftOfficeHub',
     'Microsoft.MicrosoftSolitaireCollection',
     'Microsoft.MicrosoftStickyNotes',
