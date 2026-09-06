@@ -4,33 +4,27 @@
     "actions": 
     [
         {
-            "command": "unbound",
-            "keys": "win+sc(41)"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+v"
-        },
-        {
             "command": 
             {
                 "action": "copy",
                 "singleLine": false
             },
-            "id": "User.copy.644BA8F2",
-            "keys": "ctrl+c"
-        },
-        {
-            "command": "paste",
-            "id": "User.paste"
+            "id": "User.copy.644BA8F2"
         },
         {
             "command": 
             {
                 "action": "quakeMode"
             },
-            "id": "User.quakeMode.F1E129A4",
-            "keys": "win+f12"
+            "id": "User.quakeMode.F1E129A4"
+        },
+        {
+            "command": "paste",
+            "id": "User.paste"
+        },
+        {
+            "command": "find",
+            "id": "User.find"
         },
         {
             "command": 
@@ -39,18 +33,39 @@
                 "split": "auto",
                 "splitMode": "duplicate"
             },
-            "id": "User.splitPane.A6751878",
-            "keys": "alt+shift+d"
-        },
-        {
-            "command": "find",
-            "id": "User.find",
-            "keys": "ctrl+shift+f"
+            "id": "User.splitPane.A6751878"
         }
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "keybindings": 
+    [
+        {
+            "id": null,
+            "keys": "win+sc(41)"
+        },
+        {
+            "id": "User.find",
+            "keys": "ctrl+shift+f"
+        },
+        {
+            "id": null,
+            "keys": "ctrl+v"
+        },
+        {
+            "id": "User.copy.644BA8F2",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "User.quakeMode.F1E129A4",
+            "keys": "win+f12"
+        },
+        {
+            "id": "User.splitPane.A6751878",
+            "keys": "alt+shift+d"
+        }
+    ],
     "newTabMenu": 
     [
         {
@@ -63,7 +78,11 @@
         {
             "autoMarkPrompts": true,
             "experimental.repositionCursorWithMouse": true,
-            "experimental.rightClickContextMenu": true,
+            "font": 
+            {
+                "face": "Cascadia Mono, Symbols Nerd Font"
+            },
+            "rightClickContextMenu": true,
             "showMarksOnScrollbar": true
         },
         "list": 
@@ -142,7 +161,8 @@
         ]
     },
     "schemes": [],
+    "searchWebDefaultQueryUrl": "https://www.google.com/search?q=%s",
     "tabSwitcherMode": "disabled",
     "themes": [],
-    "useAcrylicInTabRow": false
+    "useAcrylicInTabRow": true
 }

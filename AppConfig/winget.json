@@ -85,6 +85,10 @@
                     "Scope": "machine"
                 },
                 {
+                    "PackageIdentifier": "ShareX.ShareX",
+                    "Scope": "machine"
+                },
+                {
                     "PackageIdentifier": "Discord.Discord",
                     "Scope": "user"
                 },
@@ -95,10 +99,6 @@
                 {
                     "PackageIdentifier": "Docker.DockerDesktop",
                     "InitialOverrideArguments": "install --user"
-                },
-                {
-                    "PackageIdentifier": "ShareX.ShareX",
-                    "Scope": "user"
                 },
                 {
                     "PackageIdentifier": "LiveSplit.LiveSplit",

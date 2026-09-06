@@ -104,14 +104,16 @@ Add-Content $PROFILE '. "$Env:HOME\PowerShell\RustupCompletions.ps1"'
 #rustup completions powershell cargo > "$Env:HOME\PowerShell\CargoCompletions.ps1"
 #Add-Content $PROFILE '. "$Env:HOME\PowerShell\CargoCompletions.ps1"'
 
-winget configure --enable
-Start-Sleep 1
-winget configure "$PSScriptRoot\AppConfig\PowerToysConfig.dsc.yaml" --accept-configuration-agreements
+Stop-Process -Name "PowerToys"
+# Haven't actually tested this lmao
+Expand-Archive -Path "$PSScriptRoot\AppConfig\PowerToysBackup.ptb" -DestinationPath "$env:LocalAppData\Microsoft\PowerToys" -Force # Also a zip file
+Move-Item -Path "$PSScriptRoot\AppConfig\PowerToysBackup.ptb" "$env:HOME\PowerToys\Backup" -Force
+Start-Process -FielPath "C:\Program Files\PowerToys\PowerToys.exe"
 
 Move-Item -Path "$PSScriptRoot\AppConfig\settings.json" "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Force
 
 Stop-Process -Name 'ShareX' # Put ShareX to sleep for maintenance
-Expand-Archive -Path "$PSScriptRoot\AppConfig\ShareX-17.0.0-backup.sxb" -DestinationPath "$env:LocalAppData\ShareX" -Force # Apparently this is a zip file??
+Expand-Archive -Path "$PSScriptRoot\AppConfig\ShareX-21.0.0-backup.sxb" -DestinationPath "$env:LocalAppData\ShareX" -Force # Apparently this is a zip file??
 $Action = New-ScheduledTaskAction -Execute 'C:\Program Files\ShareX\ShareX.exe' -Argument '-silent'
 $Trigger = New-ScheduledTaskTrigger -AtLogOn
 $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -Compatibility Win8
