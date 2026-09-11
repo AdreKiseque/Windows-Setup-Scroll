@@ -111,6 +111,7 @@ Write-Host "Done`n"
 wsl --install
 
 # We don't *need* this, but it does make things a bit easier
+Install-PackageProvider -Name NuGet -Force
 Install-Module -Name Microsoft.WinGet.Client -Force
 
 # Make sure we're on the latest version because we depend on some more recent features
@@ -129,6 +130,9 @@ Set-WinGetUserSetting -UserSettings @{
 # winget import sucks less now!
 Write-Host 'Invoking Windows Package Manager...'
 winget import $PSScriptRoot\AppConfig\winget.json --accept-source-agreements --accept-package-agreements
+# Also make sure this is updated or the fallback fonts wont work
+Start-Sleep -Seconds 1
+winget update Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
 Write-Host 'OK'
 
 # Taking out the trash

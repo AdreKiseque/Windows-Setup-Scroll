@@ -64,6 +64,12 @@ Move-Item -Path "$PSScriptRoot\Assets\*.ico" -Destination $IconPath
 $SoundPath = New-Item -ItemType Directory -Path "$env:WinDir\Media\CustomSounds"
 Move-Item -Path "$PSScriptRoot\Assets\Windows Logon Sound.wav" -Destination "$env:WinDir\Media" -Force
 Move-Item -Path "$PSScriptRoot\Assets\*.wav" -Destination $SoundPath
+# One (1) font
+$Shell = New-Object -ComObject Shell.Application
+$Folder = $Shell.Namespace("$PSScriptRoot\Assets")
+$File = $Folder.ParseName('SymbolsNerdFont-Regular.ttf')
+# What the hell Windows
+$File.Verbs() | Where-Object { $_.Name -Replace '\p{P}' -eq 'Install' } | ForEach-Object { $_.DoIt() }
 
 # Set icons
 Set-FolderIcon -Icon "$IconPath\programmer-2.ico" -Path "$env:USERPROFILE\Arcana"
@@ -88,10 +94,10 @@ Set-SystemSound -Scheme $Scheme -EventKey '.Default\WindowsUAC'             -Sou
 #EndRegion
 
 $AD = "$Env:AppData\Microsoft\Windows\Start Menu\Programs"
-$PD = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs"
+#$PD = "$Env:ProgramData\Microsoft\Windows\Start Menu\Programs"
 
 # Configure apps
-New-Item -ItemType Directory -Path "$Env:HOME\PowerShell"
+New-Item -ItemType Directory -Path "$Env:HOME\PowerShell" -ErrorAction SilentlyContinue
 Add-Content $PROFILE {
     function prompt { # Secure password
       "`e[93m$Env:USERNAME`e[37m@`e[93m$Env:COMPUTERNAME `e[90m[$(Get-Date -Format HH:mm:ss)]`n" +
@@ -105,12 +111,13 @@ Add-Content $PROFILE '. "$Env:HOME\PowerShell\RustupCompletions.ps1"'
 #Add-Content $PROFILE '. "$Env:HOME\PowerShell\CargoCompletions.ps1"'
 
 Stop-Process -Name "PowerToys"
-# Haven't actually tested this lmao
+# HAVE tested and DOES work!
 Expand-Archive -Path "$PSScriptRoot\AppConfig\PowerToysBackup.ptb" -DestinationPath "$env:LocalAppData\Microsoft\PowerToys" -Force # Also a zip file
-Move-Item -Path "$PSScriptRoot\AppConfig\PowerToysBackup.ptb" "$env:HOME\PowerToys\Backup" -Force
-Start-Process -FielPath "C:\Program Files\PowerToys\PowerToys.exe"
+New-Item -ItemType Directory -Path "$env:HOME\PowerToys\Backup" -Force
+Copy-Item -Path "$PSScriptRoot\AppConfig\PowerToysBackup.ptb" "$env:HOME\PowerToys\Backup" -Force
+Start-Process -FilePath "$env:LocalAppData\PowerToys\PowerToys.exe"
 
-Move-Item -Path "$PSScriptRoot\AppConfig\settings.json" "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Force
+Copy-Item -Path "$PSScriptRoot\AppConfig\settings.json" "$env:LocalAppData\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState" -Force
 
 Stop-Process -Name 'ShareX' # Put ShareX to sleep for maintenance
 Expand-Archive -Path "$PSScriptRoot\AppConfig\ShareX-21.0.0-backup.sxb" -DestinationPath "$env:LocalAppData\ShareX" -Force # Apparently this is a zip file??
@@ -122,14 +129,6 @@ Register-ScheduledTask -Action $Action -RunLevel Highest -Trigger $Trigger -Sett
 Remove-Item "$AD\Startup\ShareX.lnk" # Get rid of old autostart
 # I couldn't tell you why but this seems to cause minor issues if you've signed into you Microsoft account beforehand (reïmporting manually fixes it)
 Start-Process -FilePath 'C:\Program Files\ShareX\ShareX.exe' -ArgumentList '-silent'
-
-# Organize Start Menu list full list a bit
-Remove-Item "$AD\Accessibility" -Recurse -Force
-Remove-Item "$PD\Steam\Steam Support Center.url"
-Remove-Item "$PD\Visual Studio 2022" -Recurse
-Remove-Item "$PD\Windows Kits" -Recurse
-Rename-Item "$PD\PowerShell\PowerShell 7 (x64).lnk" -NewName 'Powershell 7.lnk'
-Rename-Item "$PD\PowerToys (Preview)\PowerToys (Preview).lnk" -NewName 'Powertoys.lnk'
 
 Enable-ComputerRestore -Drive 'C:\'
 

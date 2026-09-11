@@ -97,10 +97,6 @@
                     "Scope": "user"
                 },
                 {
-                    "PackageIdentifier": "Docker.DockerDesktop",
-                    "InitialOverrideArguments": "install --user"
-                },
-                {
                     "PackageIdentifier": "LiveSplit.LiveSplit",
                     "Scope": "user"
                 },
