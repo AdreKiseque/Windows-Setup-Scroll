@@ -134,6 +134,9 @@ winget import $PSScriptRoot\AppConfig\winget.json --accept-source-agreements --a
 Start-Sleep -Seconds 1
 winget update Microsoft.WindowsTerminal --accept-source-agreements --accept-package-agreements
 Write-Host 'OK'
+# Slopguard
+Write-Host 'Slopguard'
+winget pin add --id ShareX.ShareX --version 21.*
 
 # Taking out the trash
 Write-Host 'Eliminating clutter...'
