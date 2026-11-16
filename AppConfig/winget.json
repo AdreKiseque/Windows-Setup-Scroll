@@ -86,7 +86,8 @@
                 },
                 {
                     "PackageIdentifier": "ShareX.ShareX",
-                    "Scope": "machine"
+                    "Scope": "machine",
+					"Version": "21"
                 },
                 {
                     "PackageIdentifier": "Discord.Discord",
